@@ -6,9 +6,9 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { signIn} from "next-auth/react"
 const page = () => {
-
-    const [email,setEmail] =useState("")
-    const [password,setPassword] =useState("")
+ 
+    const [email,setEmail]= useState("")
+    const [password,setPassword]=useState("")
     const [login , Setlogin] = useState(false)
 
 
@@ -16,7 +16,7 @@ const page = () => {
     const Login = async(ev)=>{
         ev.preventDefault()
     Setlogin(true)
-     signIn("Credentials") 
+  await  signIn("credentials",{email, password}) 
     Setlogin(false)
     }
   return (
