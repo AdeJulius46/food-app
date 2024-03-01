@@ -16,7 +16,7 @@ const page = () => {
     const Login = async(ev)=>{
         ev.preventDefault()
     Setlogin(true)
-  await  signIn("credentials",{email, password}) 
+  await  signIn("credentials",{email, password ,callbackUrl:"/"} ) 
     Setlogin(false)
     }
   return (
@@ -46,9 +46,18 @@ const page = () => {
         <div className='my-4 text-center text-gray-500'>
           or Login with providers 
         </div> 
+        {/* <button className='flex justify-center gap-4'   onClick={() => signIn("google",{callbackUrl:"/"})}   >   <Image src="/google.png"  width={20}  height={20}/> Login with Google</button> */}
        
-        <button className='flex justify-center gap-4'   >   <Image src="/google.png"  width={20}  height={20}/> Login with Google</button>
-
+        {/* <button className='flex justify-center gap-4'  type='submit'   onClick={() => signIn("google")}  >   <Image src="/google.png"  width={20}  height={20}/> Login with Google</button> */}
+      
+        <button
+        type='button'
+          onClick={() => signIn('google', {callbackUrl:'/'})}
+          className="flex gap-4 justify-center">
+          <Image src={'/google.png'} alt={''} width={24} height={24} />
+          Login with google
+        </button>
+       
         <div className='text-center my-4'>
           New account ? {""} <Link  className='underline'  href={"/register"}> Register here  &raquo; </Link>
         </div>

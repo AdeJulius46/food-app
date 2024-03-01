@@ -6,11 +6,16 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { MongoDBAdapter } from "@auth/mongodb-adapter"
 import clientPromise from "@/libs/mongoConnect";
 // import GithubProvider from "next-auth/providers/github"
+import GoogleProvider from "next-auth/providers/google";
  
 export  const authOptions = {
   secret:process.env.SECRET,
   adapter: MongoDBAdapter(clientPromise),
     providers: [
+      GoogleProvider({
+        clientId: process.env.GOOGLE_CLIENT_ID,
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET
+      }),
         CredentialsProvider({
           name: "Credentials",
           id:"credentials",
@@ -38,7 +43,7 @@ export  const authOptions = {
       session: {
         strategy: "jwt",
         maxAge: 30 * 24 * 60 * 60 // 30 days
-      }
+      },
 }
 
 const handler = NextAuth(authOptions);

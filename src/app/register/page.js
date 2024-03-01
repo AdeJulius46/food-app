@@ -4,6 +4,8 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { signIn} from "next-auth/react"
+
 const registerpage = () => {
   const [email,setEmail] =useState("")
   const [password,setPassword] =useState("")
@@ -65,8 +67,15 @@ const registerpage = () => {
         <div className='my-4 text-center text-gray-500'>
           or Login with providers 
         </div> 
+
+        <button
+          onClick={() => signIn('google', {callbackUrl:'/'})}
+          className="flex gap-4 justify-center">
+          <Image src={'/google.png'} alt={''} width={24} height={24} />
+          Login with google
+        </button>
        
-        <button className='flex justify-center gap-4'   >   <Image src="/google.png"  width={20}  height={20}/> Login with Google</button>
+        {/* <button className='flex justify-center gap-4'   >   <Image src="/google.png"     width={20}  height={20}    onClick={() => signIn("google",{callbackUrl:"/"})}/> Login with Google</button> */}
 
         <div className='text-center my-4'>
           Existing account ? {""} <Link  className='underline'  href={"/login"}> Login here  &raquo; </Link>
