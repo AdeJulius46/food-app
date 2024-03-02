@@ -5,24 +5,39 @@ import { redirect } from 'next/navigation'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
-
+import Tab from '@/components/layout/Tab'
+import Link from "next/link"
 const page = () => {
     const session = useSession()
 
 const [username, Setusername] =useState("") 
-const [saved ,Setsaved]= useState(false)
-const [isSaving, Setissaving]=useState(false)
 const [image, Setimage ] =useState("")
-
+const [phone, Setphone]= useState("")
+const [streetAddress, SetstreetAddress]= useState("")
+const [postalcode, Setpostalcode]= useState("")
+const [city, Setcity]= useState("")
+const [country, Setcountry]= useState("")
+const [isadmin, Setadmin]=useState("")
 const {status} = session
 
 
 
 
-useEffect(()=>{
+useEffect(()=>{ 
 if (status === "authenticated"){
      Setusername(session.data.user.name)
      Setimage(session.data.user.image)
+ fetch("/api/profile").then(response =>{
+    response.json().then(data =>{
+        console.log(data)
+      Setpostalcode(data.postalcode)
+      Setphone(data.phone)
+      Setcity(data.city)
+      Setcountry(data.country)
+      SetstreetAddress(data.streetAddress)
+      Setadmin(data.admin)
+    })
+ })
 }  
 },[session,status])
     console.log(session)
@@ -37,17 +52,16 @@ if (status === "authenticated"){
     
     const handleProfileinfoUpdate = async(ev)=>{
         ev.preventDefault()
-        Setissaving(true)
             toast("saving profile")
       const response = await fetch("/api/profile", {
             method:"PUT",
             headers:{"Content-type":"application/json"},
-            body:JSON.stringify({name:username,image})
+            body:JSON.stringify({name:username,image,streetAddress,phone,country,city,postalcode})
             
         })
        toast.success("Profile saved !!!")
         if(response.ok){
-            Setsaved(true)
+            // Setsaved(true)
         }
     }
 
@@ -84,21 +98,10 @@ if (status === "authenticated"){
 
 
     <section className='mt-8'>
-      <h1 className='text-center text-primary text-4xl mb-4  '>Profile</h1>
+      {/* <h1 className='text-center text-primary text-4xl mb-4  '>Profile</h1> */}
+        <Tab   isadmin={isadmin}/>
         <div  className='max-w-md mx-auto '>
-            {
-                isSaving && (
-                    <h2 className='text-center bg-blue-100 border-blue  p-4 rounded-lg border-4   '   > Saving...</h2>
-                )
-            }
-
-        
-            {
-                saved && (
-                    <h2 className='text-center bg-green-100 p-4 rounded-lg border-4   '   >Profile saved ...</h2>
-                )
-            }
-            <div className='flex gap-4  items-center'>
+            <div className='flex gap-4 '>
             <div>
                 <div className=' p-2 rounded-lg  min-w-[80px]  max-w-[120px] relative '>  
 
@@ -117,7 +120,24 @@ if (status === "authenticated"){
                 onChange={(ev)=>Setusername(ev.target.value) }
         
                 />
+                <label>Email</label>
                 <input  type='email'  disabled={true} value={session.data.user.email}   />
+                <label>Phone Number</label>
+                <input  type='tel'   placeholder="Phone number"       value={phone}  onChange={ev=>Setphone(ev.target.value)}   />
+                <label>Address</label>
+                    <input type='text' placeholder='Street Address'    value={streetAddress}  onChange={ev => SetstreetAddress(ev.target.value)} />
+                    <div className='flex gap-4'>
+                        <div className=''>
+                <label>City</label>
+                    <input type='text' placeholder='City'  value={city}   onChange={ev => Setcity(ev.target.value)} />
+                        </div>
+                        <div>
+                <label>Postal code</label>
+                    <input type='text' placeholder='Postal code'    value={postalcode} onChange={ev =>Setpostalcode(ev.target.value)} /> 
+                        </div>
+                    </div>
+                <label>Country</label>
+                    <input type='text' placeholder='Country'   value={country} onChange={ ev => Setcountry(ev.target.value)}  />
                 <button  type='submit' >Save</button>
             </form>
             </div>
