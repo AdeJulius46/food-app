@@ -3,7 +3,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-const Tab = ({isadmin}) => {
+const  Tab = ({isadmin}) => {
 
 
     const path =usePathname()
@@ -23,12 +23,22 @@ const Tab = ({isadmin}) => {
                     >Categories</Link>
                     <Link 
                     href={"/menu-items"}
-                    className={path==="/menu-items" ?" active":""}
+                    className={/menu-items/.test(path)
+                     ?"active":""}
                     >Menu Items</Link>
                     <Link 
+                    href={"/users"}
+                    className={/users/.test(path)
+                     ?"active":""}
+                    >Users</Link>
+                    {/* <Link 
                      href={"/users"}
                      className={path ==="/users" ? "active" :""}
-                    >Users</Link>
+                    >Users</Link> */}
+                    <Link 
+                     href={"/users"}
+                     className={path ==="/orders" ? "active" :""}
+                    >Orders</Link>
                     </>
                 )}            
         </div>

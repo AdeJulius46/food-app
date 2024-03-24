@@ -10,13 +10,13 @@ export default function Home() {
    <>
 <Hero />
 <HomeMenu/>
-<section className="text-center  my-16">
+<section className="text-center  my-16" id="about">
   <SectionHeader
   subHeader={"Our Story"}
   mainHeader={"About us"}
   
   />
-  <div className="max-w-md  mx-auto mt-4 text-gray-500 mt-4 flex-col gap-4 ">
+  <div className="max-w-md   mx-auto mt-4 text-gray-500 mt-4 flex-col gap-4 ">
 
    <p className="">
     Lorem  jhjdyuhjhed i  whs8hduwoywhud udyetdt twedtqid 7tdqtdg oudbvet ygekjude gdqdqduqd 8dyqod eg;ijfeygf6 hshedfdelsludgedg dgdhgdetdq ehduehdoqidhf hgedisugd uhsh8gJHUDH AHSUIDUGusahdgf hfuhid
@@ -26,7 +26,7 @@ export default function Home() {
    </p>
   </ div>
 </section>
-<section className="text-center my-8">
+<section className="text-center my-8" id="contact">
   <SectionHeader
   subHeader={"Dont hesitate"}
   mainHeader={"Contact us"}

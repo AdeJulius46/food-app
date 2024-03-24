@@ -8,5 +8,5 @@ const Right = ({className='w-6 h-6'}) => {
 
   )
 }
-
+ 
 export default Right

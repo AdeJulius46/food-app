@@ -1,7 +1,9 @@
 "use client"
-import React from 'react'
+import React, { useContext } from 'react'
 import Link from "next/link";
 import { signOut, useSession } from 'next-auth/react';
+import { CartContext } from '../AppContex';
+import Cart from '../icons/Cart';
 const Header = () => {
 
   const session =useSession()
@@ -9,6 +11,7 @@ const Header = () => {
   const status = session?.status
   const userData =session.data?.user
   let username =userData?.name || userData?.email 
+  const {cartProduct} =useContext(CartContext)
   if( username && username.includes(" ")){
     username =username.split(" ")[0]
   }
@@ -20,9 +23,9 @@ const Header = () => {
   </Link>
     <nav className="flex items-center gap-8 text-gray-500  font-semibold   ">
       <Link   href={'/'}> Home </Link>
-      <Link   href={''}> Menu </Link>
-      <Link   href={''}> About </Link>
-      <Link   href={''}> Contact</Link>
+      <Link   href={'/menu'}> Menu </Link>
+      <Link   href={'/#about'}> About </Link>
+      <Link   href={'/#contact'}> Contact</Link>
     </nav>
 
 
@@ -39,6 +42,15 @@ const Header = () => {
       <Link   href={'/login'}  className="bg-primary rounded-full    text-white px-4 py-2 ">  Register</Link>
         </>
       )}
+
+        {cartProduct?.length > 0 && (
+          <Link href={"/cart"} className='relative  '>
+             <Cart /> 
+             <span className='absolute -top-3 -right-5  px-2 text-white  py-1 text-xs  bg-primary p-1 rounded-full leading-3'>
+               {cartProduct.length} 
+             </span>
+          </Link>
+        )}
     </nav>
    </header>
     </div>

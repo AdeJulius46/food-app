@@ -1,9 +1,22 @@
+"use client"
 import Image from 'next/image'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import MenuItem from '../Menu/MenuItem'
 import SectionHeader from './SectionHeader'
 
 const HomeMenu = () => {
+
+  const [bestSellers, Setbest]=useState([ ])
+useEffect(()=>{
+fetch("/api/menu-items").then(response =>{
+  response.json().then(data=>{
+    //  const best=    data.slice(-1)
+     Setbest(data)
+  })
+})
+},[])
+
+
   return (
    <>
    <section className=''>
@@ -19,19 +32,17 @@ const HomeMenu = () => {
 
    <SectionHeader 
    subHeader={"Checkout"}
-   mainHeader={"Menu"}
+   mainHeader={"Our Best sellers"}
    />
 
   
    </div>
 
    <div className='grid grid-cols-3 gap-4'>
-    <MenuItem />
-    <MenuItem />
-    <MenuItem />
-    <MenuItem />
-    <MenuItem />
-    <MenuItem />
+   
+   {bestSellers.length > 0 && bestSellers.map(c =>(
+    <MenuItem  {...c}   />
+   ))}
   
    </div>
    </section>
