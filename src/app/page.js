@@ -32,9 +32,10 @@ export default function Home() {
   mainHeader={"Contact us"}
   />
   <div className="mt-8">
-
+    <div>
   <a  href="tel:+2348104303528"  
-  className="text-4xl underline text-gray-500"  >08104303528</a>
+className="text-4xl underline text-gray-500"  >08104303528</a>
+    </div>
   </div>
 </section>
 

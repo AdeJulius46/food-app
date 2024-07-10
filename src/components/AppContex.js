@@ -23,7 +23,7 @@ export  const Cartproductprice =(cartProduct)=>{
   return price
 } 
   const AppProvider  = ({children}) => {
-    const[cartProduct, Setcartproduct]=useState([])
+    const [cartProduct, Setcartproduct]=useState([])
     const ls= typeof window !== "undefined"? window.localStorage:null
     
     useEffect(()=>{
@@ -53,7 +53,7 @@ export  const Cartproductprice =(cartProduct)=>{
 
   
 
-  function saveCartproduct(cartProduct ){
+  function  saveCartproduct(cartProduct ){
     if(ls){
       ls.setItem("cart",JSON.stringify(cartProduct))
     }

@@ -6,6 +6,9 @@ const Deletebutton = ({label, onDelete}) => {
     const [showconfirm , Setshowconfirm]=useState(false)
 
 
+
+    
+
     if(showconfirm){
         return(
             <div className='fixed inset-0 flex h-full justify-center  bg-black/80  items-center '>
@@ -23,6 +26,7 @@ const Deletebutton = ({label, onDelete}) => {
             </div>
         )
     }
+
   return (
     <div>
         <button type="button"  onClick={()=>Setshowconfirm(true) }> 

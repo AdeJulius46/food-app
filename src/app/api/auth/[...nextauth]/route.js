@@ -1,4 +1,4 @@
-import NextAuth from "next-auth"
+import NextAuth, { getServerSession } from "next-auth"
 import { User} from "@/app/models/User";
 import bcrypt from "bcryptjs";
 import * as mongoose from "mongoose"
@@ -7,6 +7,7 @@ import { MongoDBAdapter } from "@auth/mongodb-adapter"
 import clientPromise from "@/libs/mongoConnect";
 // import GithubProvider from "next-auth/providers/github"
 import GoogleProvider from "next-auth/providers/google";
+import { UserInfo } from "@/app/models/Userinfo";
  
 export  const authOptions = {
   secret:process.env.SECRET,
@@ -27,7 +28,7 @@ export  const authOptions = {
 
                 const email = credentials?.email
                 const password = credentials?.password
-            mongoose.connect("mongodb://127.0.0.1:27017/food")
+            mongoose.connect("mongodb+srv://julius46:julius46@cluster0.97ozxzs.mongodb.net/")
 
             const user =  await User.findOne({email})
              const passwordOk = user && bcrypt.compareSync(password, user.password)
@@ -46,6 +47,19 @@ export  const authOptions = {
       },
 }
 
+export async function isAdmin(){
+  const session = await getServerSession(authOptions)
+  const userEmail = session?.user?.email;
+  if(!userEmail){
+    return false 
+  }
+
+  const userinfo = UserInfo.findOne({email:userEmail});
+  if(!userinfo){
+    return false;
+  }
+  return userinfo.admin
+}
 const handler = NextAuth(authOptions);
 
 export { handler as GET, handler as POST }

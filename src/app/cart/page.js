@@ -5,10 +5,11 @@ import { CartContext } from '@/components/AppContex'
 import SectionHeader from '@/components/layout/SectionHeader'
 import React, { useContext, useState } from 'react'
 import { useEffect } from 'react'
-import Image from 'next/image'
+// import Image from 'next/image'
 import toast from "react-hot-toast";
 import AdressInput from '@/components/layout/AdressInput'
 import { useProfile } from '@/components/Useprofile'
+import Cartproduct from '@/components/Menu/Cartproduct'
 
 const page = () => {
     const {cartProduct,Cartproductprice,removeCartProduct } = useContext(CartContext)
@@ -56,6 +57,20 @@ const page = () => {
           })
      }
 
+
+
+if(cartProduct?.length ===0){
+  return(
+    <section>
+
+  <SectionHeader mainHeader="Cart"/>
+  <p className=''> Your shopping cart is emptyXXXXXZ </p>
+    </section>
+  
+  )
+}
+
+
     let Subtotal=0
     for (const p of cartProduct){
         Subtotal += Cartproductprice(p)
@@ -72,39 +87,11 @@ const page = () => {
         <div className='grid grid-cols-2 gap-4 '>
           <div>
                 {cartProduct?.length ===0 &&(
-                    <div>No products in your shopping  cart</div>
+                <div>No products in your shopping  cart</div>
                 )}
                 {cartProduct?.length > 0 &&  cartProduct.map((product,index) =>(
-                    <div className='flex  gap-4 mb-2 border-b py-2 items-center'>
-                        <div className='w-24'>
-                            <Image src={product.image} width={240} height={240} />
- 
-                        </div>
-                        <div  className='grow'>
-                            <h3 className='font-semibold '>
-                        {product.name}
-                            </h3  >
-                            {product.size &&(
-                                <div className='text-sm  text-gray-7 00 '>
-                                   Size: <span>{product.size.name}</span> 
-                                </div>
-
-                            )}
-                            {product.extra?.length > 0 && (
-
-                                <div className='text-sm  text-gray-500'>
-                                   {product.extra.map(extra =>(
-                                        <div> {extra.name} + ${extra.price}</div>
+                  <Cartproduct  product={product}  onRemove={removeCartProduct}  />
                                     ))}
-                                </div>
-                            )}
-                        </div>
-                        <div className='text-lg font-semibold '> {Cartproductprice(product)}</div>
-                        <div>
-                            <button  onClick={()=> removeCartProduct(index)}>Remove</button>
-                        </div>
-                        </div>
-                ))}
                 <div className='py-4 text-right pr-16'>
                     SubTotal: <span className='text-lg font-semibold  pl-2  '>
                         

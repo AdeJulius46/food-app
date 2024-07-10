@@ -16,8 +16,8 @@ const Hero = () => {
           <Right />
           </button>
         </div>
-    </div>
-        <div className=' relative'>
+    </div> 
+        <div className=' relative hidden md:block'>
 
         <Image src={"/pizza.png"}  layout={'fill'} objectFit={'contain'}    alt={"Piza"} />
         </div>

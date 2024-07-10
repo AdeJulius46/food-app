@@ -60,7 +60,7 @@ useEffect(()=>{
  <form className='mt-8  max-w-lg mx-auto'  
  onSubmit={ev => onSubmit(ev, {image, description,baseprice,name,sizes, extraingredientprices,category}) }  
   >
-          <div className='grid gap-4  items-start'  style={{gridTemplateColumns:".3fr .7fr"}}>
+          <div className='md:grid gap-4  items-start'  style={{gridTemplateColumns:".3fr .7fr"}}>
             <div className='max-w-[200px]'>
                 <Editableimage   link={image} setLink={Setimage}   />
             </div>

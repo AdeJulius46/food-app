@@ -29,8 +29,8 @@ const Form = ({onSave, user}) => {
 
 <>
             <form className='mt-8  max-w-lg mx-auto' onSubmit={(ev)=>  onSave(ev,{name:username,image, phone, streetAddress, country,postalcode,city,admin})}>
-                <div className='grid gap-4  items-start'  style={{gridTemplateColumns:".3fr .7fr"}}>
-                <div clas sName='max-w-[200px]'>
+                <div className='md:grid gap-4   items-start'  style={{gridTemplateColumns:".3fr .7fr"}}>
+                <div className='max-w-[200px]'>
                <EditableImage   link={image} setLink={Setimage}  />
                 </div>
                 <div>

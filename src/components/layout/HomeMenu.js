@@ -25,12 +25,12 @@ fetch("/api/menu-items").then(response =>{
         <Image  src={"/sallad1.png"}  width={109}height={197}/>
     </div> 
     <div className='h-48   absolute  right-0 -top-[100px]    -z-10'>
-        <Image  src={"/sallad2.png"}  width={107} height={195}/>
+        <Image  src={"/sallad2.png"}  alt='sallad' width={107} height={195}/>
     </div>
     </div>
    <div className='text-center'> 
 
-   <SectionHeader 
+   <SectionHeader  
    subHeader={"Checkout"}
    mainHeader={"Our Best sellers"}
    />
@@ -38,8 +38,7 @@ fetch("/api/menu-items").then(response =>{
   
    </div>
 
-   <div className='grid grid-cols-3 gap-4'>
-   
+   <div className='grid sm:grid-cols-3 gap-4'>
    {bestSellers.length > 0 && bestSellers.map(c =>(
     <MenuItem  {...c}   />
    ))}
