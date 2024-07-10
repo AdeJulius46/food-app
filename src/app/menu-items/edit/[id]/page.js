@@ -13,7 +13,7 @@ import Deletebutton from '@/components/layout/Deletebutton'
 // import { Params } from 'next/dist/shared/lib/router/utils/route-matcher'
 
 
-const page = () => {
+const Page = () => {
 
 
   const {id} = useParams()
@@ -164,4 +164,4 @@ const Handledelete = async()=>{
   )
 }
 
-export default page
+export default Page

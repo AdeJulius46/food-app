@@ -5,7 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
 import { signIn} from "next-auth/react"
-const page = () => {
+const Page = () => {
  
     const [email,setEmail]= useState("")
     const [password,setPassword]=useState("")
@@ -67,4 +67,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

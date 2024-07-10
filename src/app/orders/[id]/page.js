@@ -7,7 +7,7 @@ import SectionHeader from '@/components/layout/SectionHeader'
 import { useParams } from 'next/navigation'
 import React, { useContext, useEffect, useState } from 'react'
 
-const page = () => {
+const Page = () => {
     const {clearCat}= useContext(CartContext)
     const [Order, Setorder]= useState();
     const {id} =useParams()
@@ -76,4 +76,4 @@ if(id){
   )
 }
 
-export default page
+export default Page

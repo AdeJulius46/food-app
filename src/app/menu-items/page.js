@@ -10,7 +10,7 @@ import { useEffect, useState } from 'react'
 import React from 'react'
 
 
-const page = () => {
+const Page = () => {
 
 const [MenuItems, SetMenuItes]= useState([])
 
@@ -77,4 +77,4 @@ if(!data.admin){
   )
 }
 
-export default page
+export default Page

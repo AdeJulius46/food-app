@@ -8,7 +8,7 @@ import Form from '@/components/layout/Form'
 import { toast } from 'react-hot-toast'
 
 
-const page = () => {
+const Page = () => {
     const {id} = useParams()
 
 
@@ -64,4 +64,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

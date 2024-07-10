@@ -6,7 +6,7 @@ import dateTimefunction from '@/libs/dateTimefunction';
 import Link from 'next/link';
 import React, { useEffect ,useState} from 'react'
 
-const page = () => {
+const Page = () => {
   const [orders, Setorders] =useState([]);
   const {loading, data:profile} =useProfile()
 
@@ -68,4 +68,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

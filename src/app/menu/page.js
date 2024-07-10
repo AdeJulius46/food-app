@@ -3,7 +3,7 @@ import MenuItem from '@/components/Menu/MenuItem'
 import SectionHeader from '@/components/layout/SectionHeader'
 import React, { useEffect, useState } from 'react'
 
-const page = () => {
+const Page = () => {
 
 const [categories, Setcategories]= useState([])
 const [menuitems, Setmenuitem]= useState([])
@@ -41,4 +41,4 @@ const [menuitems, Setmenuitem]= useState([])
   )
 }
 
-export default page
+export default Page

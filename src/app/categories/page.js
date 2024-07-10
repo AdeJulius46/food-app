@@ -7,7 +7,7 @@ import { useEffect, useState} from 'react'
 // import { json } from 'stream/consumers'
 import toast from 'react-hot-toast'
 
-const page = () => {
+const Page = () => {
  const {loading:profileLoading,data:profile}= useProfile();
   const [newCategory, Setnewcategory]=useState("")
   const [categories, SetCategory] = useState([])
@@ -164,4 +164,4 @@ Fetch()
   )
 }
 
-export default page 
+export default Page 

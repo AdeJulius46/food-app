@@ -4,7 +4,7 @@ import Tab from '@/components/layout/Tab'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 
-const page = () => {
+const Page = () => {
  const [users, Setusers]= useState([])
 
 
@@ -52,4 +52,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
