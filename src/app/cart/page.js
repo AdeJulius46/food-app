@@ -11,7 +11,7 @@ import AdressInput from '@/components/layout/AdressInput'
 import { useProfile } from '@/components/Useprofile'
 import Cartproduct from '@/components/Menu/Cartproduct'
 
-const page = () => {
+const Page = () => {
     const {cartProduct,Cartproductprice,removeCartProduct } = useContext(CartContext)
     const [addres, SetAddress]=useState({})
 
@@ -132,4 +132,4 @@ if(cartProduct?.length ===0){
   )
 }
 
-export default page  
+export default Page  

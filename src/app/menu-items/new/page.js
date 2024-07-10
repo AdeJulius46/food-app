@@ -10,7 +10,7 @@ import Left from '@/components/icons/Left'
 import { redirect } from 'next/navigation'
 import MenuItem from '@/components/layout/MenuItem'
 
-const page = () => {
+const Page = () => {
 
 const {loading, data} = useProfile()
 // const [image, Setimage]=useState("")
@@ -99,4 +99,4 @@ if(!data.admin){
   )
 }
 
-export default page
+export default Page
