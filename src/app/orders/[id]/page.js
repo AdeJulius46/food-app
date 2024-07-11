@@ -54,7 +54,7 @@ if(id){
         <div className='grid md:grid-cols-2 md:gap-16'>
         <div>
             {Order.cartProduct.map(product =>(
-                <Cartproduct product={product} />
+                <Cartproduct key={product._id} product={product} />
             ))}
             <div className=' text-right py-2 text-gray-500 '>
                 Subtotal:<span className='text-black font-bold'>{subtotal}</span>

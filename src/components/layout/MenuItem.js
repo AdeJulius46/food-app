@@ -73,7 +73,7 @@ useEffect(()=>{
               <label>Category</label>
               <select value={category} onChange={(ev) => SetCategory(ev.target.value)}>
                   {categories?.length > 0 && categories.map(c=>(
-                    <option value={c._id}>{c.name}</option>
+                    <option key={c._id} value={c._id}>{c.name}</option>
                   ))}
               </select>
               <label>  Base Price</label>

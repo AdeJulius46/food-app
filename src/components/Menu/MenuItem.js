@@ -72,7 +72,7 @@ if(checked){
            <div className='bg-gray-200 rounded p-2'>
               <h3 className='text-center text-gray-700'>Pick your Size</h3>
               {sizes.map(size =>(
-                <label  className='block p-2 rounded-md mb-1 flex items-center  border gap-1 '>
+                <label key={size._id}  className='block p-2 rounded-md mb-1 flex items-center  border gap-1 '>
                   <input  name={size}    type='radio' checked={selected?.name === size.name }     onClick={()=> Setselected(size)} /> {size.name}  ${baseprice + size.price}
                 </label>
               ))}
@@ -83,7 +83,7 @@ if(checked){
            <div className='bg-gray-200 rounded p-2 mt-4'>
            <h3 className='text-center text-gray-700'>Any extra!!</h3>
            {extraingredientprices.map(extra =>(
-             <label  className='block p-2 rounded-md mb-1 flex items-center  border gap-1 '>
+             <label key={extra._id}   className='block p-2 rounded-md mb-1 flex items-center  border gap-1 '>
                <input  name={extra}   onClick={(ev)=>Handleextra(ev,extra)}   type='checkbox' /> {extra.name}  ${extra.price}
              </label>
            ))}

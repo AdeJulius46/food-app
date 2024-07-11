@@ -59,7 +59,7 @@ if(!data.admin){
         <div className='grid grid-cols-3 gap-2 '>
 
         {MenuItems?.length > 0 && MenuItems.map(c =>(
-          <Link  href={"/menu-items/edit/"+c._id} className='bg-gray-300 p-4 rounded-lg '> 
+          <Link  key={c._id} href={"/menu-items/edit/"+c._id} className='bg-gray-300 p-4 rounded-lg '> 
            <div className='relative'>
             <Image src={c.image} alt={''}  width={200} height={200}  className='rounded-md'/>
 

@@ -23,7 +23,7 @@ const Cartproduct = ({product,onRemove, Cartproductpric}) => {
 
                                 <div className='text-sm  text-gray-500'>
                                    {product.extra.map(extra =>(
-                                        <div> {extra.name} + ${extra.price}</div>
+                                        <div key={extra._id}> {extra.name} + ${extra.price}</div>
                                     ))}
                                 </div>
                             )}

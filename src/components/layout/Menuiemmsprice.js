@@ -58,7 +58,7 @@ function Menuiemmsprice({props, Setprops,name,addLabel }) {
                  <div>
                   <div>
                   {props?.length > 0 && props.map((size,index) =>(
-                  <div className='flex items-end gap-2 '>
+                  <div key={index} className='flex items-end gap-2 '>
                     <div>
                   <input type='text' placeholder='Size name' value={size.name}   onChange={ev => editSize(ev, index,"name")} />
                     </div>
