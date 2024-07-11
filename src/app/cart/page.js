@@ -90,7 +90,7 @@ if(cartProduct?.length ===0){
                 <div>No products in your shopping  cart</div>
                 )}
                 {cartProduct?.length > 0 &&  cartProduct.map((product,index) =>(
-                  <Cartproduct  product={product}  onRemove={removeCartProduct}  />
+                  <Cartproduct  key={index} product={product}  onRemove={removeCartProduct}  />
                                     ))}
                 <div className='py-4 text-right pr-16'>
                     SubTotal: <span className='text-lg font-semibold  pl-2  '>

@@ -51,7 +51,7 @@ if(id){
     </div>
     </div>
     {Order && (
-        <div className='grid md:grid-cols-2 md:     gap-16'>
+        <div className='grid md:grid-cols-2 md:gap-16'>
         <div>
             {Order.cartProduct.map(product =>(
                 <Cartproduct product={product} />

@@ -136,7 +136,7 @@ Fetch()
     <ul>
     <h2 className='mt-8  text-sm text-gray-500'>Existing category</h2>
       {categories?.length > 0 && categories.map(c =>(
-        <div className=' bg-gray-100  rounded-xl p-2 flex gap-1  mb-2' 
+        <div   key={c._id} className=' bg-gray-100  rounded-xl p-2 flex gap-1  mb-2' 
           //  onClick={()=>{ 
           //   Seteditedcategory(c);
           //   Setnewcategory(c.name)

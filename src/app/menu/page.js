@@ -31,7 +31,8 @@ const [menuitems, Setmenuitem]= useState([])
                 </div>
                 <div className='grid sm:grid-cols-3  gap-4 mt-6 mb-12 '>
                 {menuitems.filter(item => item.category === c._id).map(item =>(
-                            <MenuItem {...item}/>
+                            <MenuItem key={item._id}
+                              {...item}/>
                             
                             ))} 
                             </div>
